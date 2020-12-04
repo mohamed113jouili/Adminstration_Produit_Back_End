@@ -25,7 +25,7 @@ public class Client {
 	String address;
 	String zipcode;
 	String city;
-	int phoneNumber;
+	String  phoneNumber;
 	
 	
 }

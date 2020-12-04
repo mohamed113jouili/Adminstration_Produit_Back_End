@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.produit.dao.CategoryProductRepository;
 import com.produit.dao.Product;
 import com.produit.dao.ProductRepository;
 
@@ -17,6 +18,9 @@ public class ProductServiceImp implements ProductService {
 
 	@Autowired
 	ProductRepository productrepository;
+
+	@Autowired
+	CategoryProductRepository categoryProductRepository;
 
 	@Override
 	public Optional<Product> findOneProduct(Long id) {
@@ -30,7 +34,12 @@ public class ProductServiceImp implements ProductService {
 
 	@Override
 	public Product saveProduct(Product product) {
-		return productrepository.save(product);
+		Product productt = new Product();
+		productt = productrepository.save(product);
+
+		productt.setCategoryProduct(categoryProductRepository.findById(product.getCategoryProduct().getId()).get());
+
+		return productt;
 	}
 
 	@Override

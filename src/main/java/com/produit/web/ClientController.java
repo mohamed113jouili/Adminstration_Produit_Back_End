@@ -23,43 +23,43 @@ public class ClientController {
 	@Autowired
 	ClientService clientservice;
 
-	/*
-	 *** find client by id
-	 */
+
+	//find client by id
+
 	@RequestMapping(value = "/client/{id}", method = RequestMethod.GET)
 	public Optional<Client> getClientById(@PathVariable Long id) {
 		return clientservice.findOneClient(id);
 	}
 
-	/*
-	 *** find all client
-	 */
+	
+	// find all client
+
 	@RequestMapping(value = "/clients", method = RequestMethod.GET)
 	public List<Client> getAllClient() {
 		return clientservice.findAllPlayer();
 	}
 
-	/*
-	 *** save client
-	 */
+	
+	 // save client
+	
 	@RequestMapping(value = "save/client", method = RequestMethod.POST)
 	public Client savePlayer(@Valid @RequestBody Client client) {
 
 		return clientservice.saveClient(client);
 	}
 
-	/*
-	 *** update client
-	 */
+
+	// update client
+
 	@RequestMapping(value = "/update/client/{id}", method = RequestMethod.PUT)
 	public Client updatePlayer(@PathVariable Long id, @RequestBody Client client) {
 		return clientservice.updateClient(id, client);
 
 	}
 
-	/*
-	 *** delete client by id
-	 */
+	
+	// delete client by id
+	
 	@RequestMapping(value = "/delete/client/{id}", method = RequestMethod.DELETE)
 	public Boolean deletePlayerById(@PathVariable Long id) {
 		clientservice.deleteProductByid(id);
