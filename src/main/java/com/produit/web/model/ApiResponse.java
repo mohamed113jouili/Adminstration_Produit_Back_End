@@ -20,6 +20,7 @@ public class ApiResponse extends ApiSubError {
 	private String message;
 	private int type;
 	private String comment;
+	private String name;
 	
 
 	public ApiResponse(HttpStatus status, String message, String comment) {
@@ -37,6 +38,15 @@ public class ApiResponse extends ApiSubError {
 		this.message = message;
 		this.type = type;
 		this.comment = comment;
+
+	}
+	public ApiResponse(HttpStatus status, String message, int type, String comment,String name) {
+		timestamp = LocalDateTime.now();
+		this.status = status;
+		this.message = message;
+		this.type = type;
+		this.comment = comment;
+		this.name=name;
 
 	}
 

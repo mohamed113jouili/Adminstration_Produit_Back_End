@@ -2,6 +2,9 @@ package com.produit.web;
 
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,9 +16,10 @@ import com.produit.dao.CategoryProduct;
 import com.produit.service.CategoryProductService;
 
 @CrossOrigin("*")
+//@CrossOrigin(origins = "http://192.168.100.191:4200")
 @RestController
 public class CategoryProductController {
-
+//
 	@Autowired
 	CategoryProductService categoryProductService;
 
@@ -34,9 +38,8 @@ public class CategoryProductController {
 	}
 
 	// save categoryProduct
-
 	@RequestMapping(value = "save/category_product", method = RequestMethod.POST)
-	public CategoryProduct saveCategoryProduct(@RequestBody CategoryProduct categoryProduct) {
+	public CategoryProduct saveCategoryProduct(@Valid @RequestBody CategoryProduct categoryProduct) {
 
 		return categoryProductService.saveCategoryProduct(categoryProduct);
 	}
@@ -44,7 +47,7 @@ public class CategoryProductController {
 	// update categoryProduct
 
 	@RequestMapping(value = "/update/category_product/{id}", method = RequestMethod.PUT)
-	public CategoryProduct updateCategoryProduct(@PathVariable Long id, @RequestBody CategoryProduct categoryProduct) {
+	public CategoryProduct updateCategoryProduct(@PathVariable Long id,@Valid @RequestBody CategoryProduct categoryProduct) {
 		return categoryProductService.updateCategoryProduct(id, categoryProduct);
 
 	}

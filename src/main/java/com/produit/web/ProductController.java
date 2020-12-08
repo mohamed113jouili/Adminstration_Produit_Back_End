@@ -2,6 +2,9 @@ package com.produit.web;
 
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,7 +39,7 @@ public class ProductController {
 	// save product
 
 	@RequestMapping(value = "save/product", method = RequestMethod.POST)
-	public Product saveProduct(@RequestBody Product product) {
+	public Product saveProduct( @Valid @RequestBody Product product) {
 
 		return productService.saveProduct(product);
 	}
@@ -44,7 +47,7 @@ public class ProductController {
 	// update product
 
 	@RequestMapping(value = "/update/product/{id}", method = RequestMethod.PUT)
-	public Product updatePlayer(@PathVariable Long id, @RequestBody Product product) {
+	public Product updatePlayer(@PathVariable Long id, @Valid @RequestBody Product product) {
 		return productService.updateProduct(id, product);
 
 	}

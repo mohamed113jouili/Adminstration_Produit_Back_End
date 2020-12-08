@@ -1,7 +1,9 @@
 package com.produit.service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -25,7 +27,10 @@ public class ProductCategoryImp implements CategoryProductService {
 
 	@Override
 	public List<CategoryProduct> findAllCategoryProduct() {
-		return categoryproductRepository.findAll();
+		
+		return categoryproductRepository.findAll().stream()
+	            .sorted(Comparator.comparingLong(CategoryProduct::getId))
+	            .collect(Collectors.toList());
 	}
 
 	@Override
@@ -44,5 +49,7 @@ public class ProductCategoryImp implements CategoryProductService {
 		categoryproductRepository.deleteById(id);
 
 	}
+	
+
 
 }

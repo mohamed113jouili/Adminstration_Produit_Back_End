@@ -81,11 +81,13 @@ public class AppExceptionHandeller {
 		String constraintName=ex.getConstraintName();
 
 		ApiResponse apiError = new ApiResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), 100,
-				"duplicate "+constraintName);
+				"duplicate "+constraintName,constraintName);
 		
 		
 		return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
 	}
+	
+
 	
 	
 	

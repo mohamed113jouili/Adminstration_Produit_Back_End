@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.produit.dao.Client;
 import com.produit.service.ClientService;
-
+//
 @CrossOrigin("*")
 @RestController
 public class ClientController {
@@ -43,7 +43,7 @@ public class ClientController {
 	 // save client
 	
 	@RequestMapping(value = "save/client", method = RequestMethod.POST)
-	public Client savePlayer(@Valid @RequestBody Client client) {
+	public Client saveClient(@Valid @RequestBody Client client) {
 
 		return clientservice.saveClient(client);
 	}
@@ -52,7 +52,7 @@ public class ClientController {
 	// update client
 
 	@RequestMapping(value = "/update/client/{id}", method = RequestMethod.PUT)
-	public Client updatePlayer(@PathVariable Long id, @RequestBody Client client) {
+	public Client updateClient(@PathVariable Long id, @Valid @RequestBody Client client) {
 		return clientservice.updateClient(id, client);
 
 	}
@@ -61,7 +61,7 @@ public class ClientController {
 	// delete client by id
 	
 	@RequestMapping(value = "/delete/client/{id}", method = RequestMethod.DELETE)
-	public Boolean deletePlayerById(@PathVariable Long id) {
+	public Boolean deleteClientById(@PathVariable Long id) {
 		clientservice.deleteProductByid(id);
 		return true;
 	}
