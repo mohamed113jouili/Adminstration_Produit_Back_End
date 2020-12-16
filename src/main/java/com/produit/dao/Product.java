@@ -10,8 +10,13 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
 
 import com.produit.web.exception.Helper;
 
@@ -21,11 +26,9 @@ import lombok.Setter;
 @Entity(name = "product")
 @Getter
 @Setter
-@Table(name = "product",
-uniqueConstraints = { @UniqueConstraint(columnNames = { "name" }, 
-name = "pro_name") })
-public class Product implements Comparable<Product>  {
-	
+@Table(name = "product", uniqueConstraints = { @UniqueConstraint(columnNames = { "name" }, name = "pro_name") })
+public class Product implements Comparable<Product> {
+
 	@Id
 	@GeneratedValue
 	@Column(name = "product_id")
@@ -35,31 +38,24 @@ public class Product implements Comparable<Product>  {
 	@NotEmpty(message = Helper.MESSAGE_EXCEPTION_NOT_EMPTY)
 	private String name;
 
-	@Size(min = 5, max = 100, message = Helper.MESSAGE_EXCEPTION_LENGTCH)
-	@NotEmpty(message = Helper.MESSAGE_EXCEPTION_NOT_EMPTY)
+	// @Size(min = 5, max = 100, message = Helper.MESSAGE_EXCEPTION_LENGTCH)
+	// @NotEmpty(message = Helper.MESSAGE_EXCEPTION_NOT_EMPTY)
 	private String description;
 
+	@NotNull
+	@DecimalMin(value = "0.0001", inclusive = false)
+	@Digits(integer = 3, fraction = 2)
 	private double price;
 
 	private int availableStock;
 
-
-	  @ManyToOne(fetch = FetchType.LAZY)
-	  
-	  @JoinTable(name = "join_categoryproduct_product", joinColumns = @JoinColumn(name =
-	  "product_id"), inverseJoinColumns = @JoinColumn(name =
-	  "category_product_id"))
-	 
-
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinTable(name = "join_categoryproduct_product", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_product_id"))
 	private CategoryProduct categoryProduct;
-
 
 	@Override
 	public int compareTo(Product o) {
 		return id.compareTo(o.getId());
 	}
-	  
-	  
-	  
 
 }

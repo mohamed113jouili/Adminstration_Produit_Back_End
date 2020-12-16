@@ -39,8 +39,8 @@ public class CategoryProduct implements Comparable<CategoryProduct> {
 
 	@Getter
 	@Setter
-	@Size(min = 5, max = 1000, message = Helper.MESSAGE_EXCEPTION_LENGTCH)
-	@NotEmpty(message = Helper.MESSAGE_EXCEPTION_NOT_EMPTY)
+	//@Size(min = 5, max = 1000, message = Helper.MESSAGE_EXCEPTION_LENGTCH)
+	//@NotEmpty(message = Helper.MESSAGE_EXCEPTION_NOT_EMPTY)
 	private String description;
 
 	// here ignore getter fixed problem

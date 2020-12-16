@@ -1,6 +1,6 @@
 package com.produit.dao;
 
-import java.util.Date;
+//import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+//import com.fasterxml.jackson.annotation.JsonFormat;
 import com.produit.web.exception.Helper;
 
 import lombok.Getter;
@@ -38,8 +38,8 @@ public class Client  implements Comparable<Client>{
 	@NotEmpty(message = Helper.MESSAGE_EXCEPTION_NOT_EMPTY)
 	String firstname;
 	
-	@Size(min = 3, max = 15, message = Helper.MESSAGE_EXCEPTION_SIZE)
-	@NotEmpty(message =  Helper.MESSAGE_EXCEPTION_NOT_EMPTY)
+	//@Size(min = 3, max = 15, message = Helper.MESSAGE_EXCEPTION_SIZE)
+	//@NotEmpty(message =  Helper.MESSAGE_EXCEPTION_NOT_EMPTY)
 	String lastname;
 	
 	@Size(min = 10, max = 40, message = Helper.MESSAGE_EXCEPTION_SIZE)
@@ -47,12 +47,16 @@ public class Client  implements Comparable<Client>{
 	@Email(message = Helper.MESSAGE_EXCEPTION_EMAIL_FORMAT)
 	String email;
 	
-	@NotNull(message = Helper.MESSAGE_EXCEPTION_NOT_NULL)
-	@JsonFormat(pattern = Helper.PATTERN_DATE_FORMAT)
-	Date registerDate ;
+	//@NotNull(message = Helper.MESSAGE_EXCEPTION_NOT_NULL)
+	//@JsonFormat(pattern = Helper.PATTERN_DATE_FORMAT)
+	//Date registerDate ;
 	
+	@Size(min = 5, message = Helper.MESSAGE_EXCEPTION_SIZE)
+	@NotEmpty(message =  Helper.MESSAGE_EXCEPTION_NOT_EMPTY)
 	String address;
+	
 	String zipcode;
+	
 	String city;
 	
 	@NotNull(message = Helper.MESSAGE_EXCEPTION_NOT_NULL)
