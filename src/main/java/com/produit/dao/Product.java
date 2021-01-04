@@ -16,7 +16,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Range;
+//import org.hibernate.validator.constraints.Range;
 
 import com.produit.web.exception.Helper;
 
@@ -44,7 +44,7 @@ public class Product implements Comparable<Product> {
 
 	@NotNull
 	@DecimalMin(value = "0.0001", inclusive = false)
-	@Digits(integer = 3, fraction = 2)
+	@Digits(integer = 10, fraction = 2)
 	private double price;
 
 	private int availableStock;
