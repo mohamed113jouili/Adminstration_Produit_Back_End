@@ -8,5 +8,7 @@ you can download this project and modify as needed
 
 ![umlc](https://user-images.githubusercontent.com/61349826/104135729-2d94f700-5392-11eb-9e9a-7fee5f4ae1a0.png)
 
+do not forget to install lombok in your IDE(@Getter and @Setter)
+
 
 
