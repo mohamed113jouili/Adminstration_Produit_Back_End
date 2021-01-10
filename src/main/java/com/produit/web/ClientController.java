@@ -36,7 +36,7 @@ public class ClientController {
 
 	@RequestMapping(value = "/clients", method = RequestMethod.GET)
 	public List<Client> getAllClient() {
-		return clientservice.findAllPlayer();
+		return clientservice.findAllClient();
 	}
 
 	

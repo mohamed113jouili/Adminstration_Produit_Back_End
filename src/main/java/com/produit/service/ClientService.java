@@ -9,7 +9,7 @@ public interface ClientService {
 
 	public Optional<Client> findOneClient(Long id);
 
-	public List<Client> findAllPlayer();
+	public List<Client> findAllClient();
 
 	public Client saveClient(Client client);
 

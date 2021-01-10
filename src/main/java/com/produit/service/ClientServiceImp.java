@@ -28,7 +28,7 @@ public class ClientServiceImp implements ClientService {
 	}
 
 	@Override
-	public List<Client> findAllPlayer() {
+	public List<Client> findAllClient() {
 	
 		
        
